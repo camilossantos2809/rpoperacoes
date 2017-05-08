@@ -1,3 +1,7 @@
+/*
+  Retorna a descrição do Sitef para a bandeira do cartão de acordo o movimento.
+  Pode ser utilizada para cadastrar a descrição das bandeiras no cadastro de bins.
+*/
 select 
   split_part(tvd_registro,'|',1) as finalizadora,
   split_part(tvd_registro,'|',49) as bandeira
@@ -9,3 +13,4 @@ where
   and cast(tvd_data_hora as date) = '2016-11-28'
 group by 1,2
 order by 1,2;
+
