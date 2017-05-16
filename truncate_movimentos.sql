@@ -1,3 +1,9 @@
+/*
+    Comandos para serem utilizados para remover a movimentação na base de dados antes da implantação
+
+    Versão: 1.1
+*/
+
 begin;
 truncate agforn;
 truncate agrec;
@@ -9,9 +15,6 @@ truncate biometrias;
 truncate bxparcial;
 truncate bxpendest;
 truncate errosimpautom;
-truncate invfisc1016;
-truncate invfisc1116;
-truncate invfisc1216;
 truncate log;
 truncate mensagens;
 truncate metasprod;
@@ -31,11 +34,6 @@ truncate movneg;
 truncate movocbens;
 truncate movpesquisa;
 truncate movprodc;
-truncate movprodd1114;
-truncate movprodd1214;
-truncate movprodd0115;
-truncate movprodd0215;
-truncate movprodd0315;
 truncate movratger;
 truncate movservicos;
 truncate movtrib;
@@ -52,11 +50,9 @@ truncate pedvendac;
 truncate pedvendad;
 truncate pendest;
 truncate pendfin;
-truncate ra14;
-truncate ra15;
-truncate ra16;
 truncate rascunhos;
 truncate recmerc;
+truncate recnfe;
 truncate regrasneg;
 truncate regforn;
 truncate regrastxadm;
@@ -68,12 +64,28 @@ truncate saldoscon;
 truncate seqmapa;
 truncate susplcto;
 truncate tabforn;
-truncate vdadet1114;
-truncate vdadet1214;
-truncate vdadet0115;
-truncate vdadet0215;
-truncate vdadet0315;
 truncate vdonlinefi;
 truncate vdonlineprod;
 truncate xmlnfe;
 --commit;
+
+/*
+    Realiza uma consulta dos nomes das tabelas criadas pelo flexdb para cada mês e
+    efetua um truncate para limpar os registros de cada uma.
+*/
+do $$
+    declare
+        vTabelas record;
+    begin
+        for vTabelas in
+            select relname 
+            from pg_class 
+            where 
+                relname like any (array['movprodd%', 'invfisc%', 'vdadet%', 'ra%']) 
+                and relkind='r'
+            order by relname
+        loop
+            perform format('truncate %I;', vTabelas.relname);
+        end loop;
+    end
+$$ language plpgsql;
