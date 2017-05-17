@@ -3,7 +3,6 @@
 
     Versão: 1.1
 */
-
 begin;
 truncate agforn;
 truncate agrec;
@@ -67,7 +66,6 @@ truncate tabforn;
 truncate vdonlinefi;
 truncate vdonlineprod;
 truncate xmlnfe;
---commit;
 
 /*
     Realiza uma consulta dos nomes das tabelas criadas pelo flexdb para cada mês e
@@ -78,14 +76,17 @@ do $$
         vTabelas record;
     begin
         for vTabelas in
-            select relname 
-            from pg_class 
-            where 
-                relname like any (array['movprodd%', 'invfisc%', 'vdadet%', 'ra%']) 
+            select relname
+            from pg_class
+            where
+                relname like any (array['movprodd%', 'invfisc%', 'vdadet%', 'ra%'])
                 and relkind='r'
             order by relname
         loop
             perform format('truncate %I;', vTabelas.relname);
+            raise notice 'truncate %; realizado', vTabelas.relname;
         end loop;
     end
 $$ language plpgsql;
+
+commit;
