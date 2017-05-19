@@ -1,8 +1,11 @@
 /*
     Comandos para serem utilizados para remover a movimentação na base de dados antes da implantação
 
-    Versão: 1.1
+    Versão: 1.2
 */
+
+set client_encoding='latin1';
+
 begin;
 truncate agforn;
 truncate agrec;
@@ -79,11 +82,12 @@ do $$
             select relname
             from pg_class
             where
-                relname like any (array['movprodd%', 'invfisc%', 'vdadet%', 'ra%'])
+                relname like any (array['movprodd%', 'invfisc%', 'vdadet%', 'ra__'])
                 and relkind='r'
             order by relname
         loop
-            perform format('truncate %I;', vTabelas.relname);
+            raise notice 'Iniciando limpeza da tabela % ...', vTabelas.relname;
+            execute format('truncate %I;', vTabelas.relname);
             raise notice 'truncate %; realizado', vTabelas.relname;
         end loop;
     end
