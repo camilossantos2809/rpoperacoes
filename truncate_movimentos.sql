@@ -1,7 +1,7 @@
 /*
     Comandos para serem utilizados para remover a movimentação na base de dados antes da implantação
 
-    Versão: 1.2
+    Versão: 1.3
 */
 
 set client_encoding='latin1';
@@ -16,6 +16,13 @@ truncate auditest;
 truncate biometrias;
 truncate bxparcial;
 truncate bxpendest;
+truncate conscadastronfe;
+truncate consprotnfe;
+truncate consultacte;
+truncate consprotmdfe;
+truncate consrecnfe;
+truncate consultanfservico;
+truncate dados2;
 truncate errosimpautom;
 truncate log;
 truncate mensagens;
@@ -66,9 +73,16 @@ truncate saldoscon;
 truncate seqmapa;
 truncate susplcto;
 truncate tabforn;
+truncate textos;
 truncate vdonlinefi;
 truncate vdonlineprod;
 truncate xmlnfe;
+
+/*
+    Deleta formatos criados para relatórios e configurações de posicionamento de colunas nos grids
+*/
+delete from formatosrel
+where usuario <> '9999';
 
 /*
     Realiza uma consulta dos nomes das tabelas criadas pelo flexdb para cada mês e
