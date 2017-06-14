@@ -2,6 +2,12 @@
     Comandos para serem utilizados para remover a movimentação na base de dados antes da implantação
 
     Versão: 1.3
+
+    Observações:
+        - Em alguns casos onde na base de dados existem muitas tabelas geradas por mês (vdadet, movprodd, invfisc) a quantidade de
+        locks geradas na transação pode ser maior que o default do postgres, gerando erro ao rodar os comandos.
+        Para contornar esse problema deve ser aumentado o valor do parâmetro max_locks_per_transaction no postgresql.conf, ou executar
+        os comandos sem isolar a transação (remover begin e commit).
 */
 
 set client_encoding='latin1';

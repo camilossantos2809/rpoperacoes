@@ -1,6 +1,12 @@
 /*
-    Função que retorna comando SQL correspondente ao tipo da tabela (movprodd, vdadet, invfisc)
-    de acordo com o período informado no parâmetro.
+    Função que cria comando SQL dinâmico concatenando o nome da tabela informada no parâmetro (movprodd, vdadet, invfisc)
+    ao mes e ano e gerando a consulta para cada tabela correspondente ao período informado.
+    
+    Conforme o período solicitado no parâmetro, será gerado um comando SQL dinâmico adicionando um UNION
+    para cada mês de movimento.
+
+    A intenção é que essa função seja um utilitário para seu uso em outras funções, ela não foi
+    idealizada para ser executada diretamente no frontend.
 
     Parametros:
         tabela - nome da tabela que será concatenada com mês e ano (movprodd, vdadet, invfisc)
@@ -9,31 +15,53 @@
         final_query - Trecho de código SQL a ser adicionado ao final da consulta (JOIN, WHERE e/ou GROUP BY)
         campos_select - Caso seja necessário especificar os campos a serem retornados na consulta, informar o array
             contendo os campos necessários
+        union_all - Se "true" utilizará "UNION ALL" ao invés de "UNION" no comando SQL
     
     Exemplo de utilização:
         select 
             utils.fn_query_periodo(
                 'vdadet',
-                '2015-01-24'::date,
-                current_date,
+                '2017-01-20'::date,
+                '2017-02-10'::date,
                 'inner join produtos 
                 on (mprd_prod_codigo=prod_codigo) 
                 where prod_codigo=100006',
                 array['prod_codigo','prod_descricao','mprd_valor']
             );
     
-    Versão: 0.1
+    Exemplo de retorno:
+        select
+            prod_codigo,
+            prod_descricao,
+            mprd_valor
+        from
+            vdadet0117
+            inner join produtos on (mprd_prod_codigo = prod_codigo)
+        where
+            prod_codigo = 100006
+        union
+        select
+            prod_codigo,
+            prod_descricao,
+            mprd_valor
+        from
+            vdadet0217
+        inner join produtos on (mprd_prod_codigo = prod_codigo)
+        where
+            prod_codigo = 100006
+
+    Versão: 0.2
 */
 create or replace function utils.fn_query_periodo(
     tabela text,
     data_inicial date,
     data_final date,
     final_query text,
-    campos_select text[]
+    campos_select text[],
+    union_all boolean
     )
  RETURNS text 
  LANGUAGE plpgsql
- -- common options:  IMMUTABLE  STABLE  STRICT  SECURITY DEFINER
 AS $$
 declare
     tSql text;
@@ -76,7 +104,11 @@ begin
 
         --inclui a cláusula union somente se ainda não for a última tabela
         if i < array_upper(aTabelas, 1) then
-            tSql = concat(tSql, 'union ', E'\n');
+            if union_all then
+                tSql = concat(tSql, 'union all ', E'\n');
+            else
+                tSql = concat(tSql, 'union ', E'\n');
+            end if;
         end if;
     end loop;
 
