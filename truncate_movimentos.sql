@@ -1,8 +1,6 @@
 /*
     Comandos para serem utilizados para remover a movimentação na base de dados antes da implantação
 
-    Versão: 1.3
-
     Observações:
         - Em alguns casos onde na base de dados existem muitas tabelas geradas por mês (vdadet, movprodd, invfisc) a quantidade de
         locks geradas na transação pode ser maior que o default do postgres, gerando erro ao rodar os comandos.
@@ -30,6 +28,7 @@ truncate consrecnfe;
 truncate consultanfservico;
 truncate dados2;
 truncate errosimpautom;
+truncate inutnfe;
 truncate log;
 truncate mensagens;
 truncate metasprod;
@@ -103,7 +102,8 @@ do $$
             from pg_class
             where
                 relname like any (array['movprodd%', 'invfisc%', 'vdadet%', 'ra__'])
-                and relkind='r'
+                and relkind = 'r' 
+                and reltuples > 0
             order by relname
         loop
             raise notice 'Iniciando limpeza da tabela % ...', vTabelas.relname;
