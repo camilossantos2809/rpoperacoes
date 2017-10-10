@@ -36,6 +36,9 @@ begin
     --O resultado da subtração de 10 pela sobra da divisão da soma dos dígitos 
     --por 10 é o dígito verificador
     v_DV = 10 - mod(v_soma, 10);
+    if v_DV = 10 then
+        v_DV := 0;
+    end if;
     
     --É retornado o código de barras concatenado ao dígito verificador
     return array_to_string(v_digitos, '') || v_DV;
