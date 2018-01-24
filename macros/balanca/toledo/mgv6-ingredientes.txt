@@ -1,0 +1,19 @@
+//edit "Origem"
+INGREDIENTES
+//edit "Condição" (sugestão)
+(PrUn_Ativo="S" and PrUn_PrVenda > 0)
+//edit "Campos"
+ingr_prod_codigo;ingr_linha1;ingr_linha2;ingr_linha3;ingr_linha4;ingr_linha5;prod_codbarras
+//Macros
+[SubStr(Cpo(QExp.Prod_CodBarras),7,6)]
+[Space(100)]
+[Left(Cpo(QExp.Ingr_Linha1),50)]
+[Space(6)]
+[Left(Cpo(QExp.Ingr_Linha2),50)]
+[Space(6)]
+[Left(Cpo(QExp.Ingr_Linha3),50)]
+[Space(6)]
+[Left(Cpo(QExp.Ingr_Linha4),50)]
+[Space(6)]
+[Left(Cpo(QExp.Ingr_Linha5),50)]
+[Space(6)]

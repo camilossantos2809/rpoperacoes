@@ -1,0 +1,20 @@
+//edit "Origem"
+PRODUTOS
+//edit "Condição" (sugestão)
+(PrUn_Ativo="S" and PrUn_PrVenda > 0)
+//edit "Campos"
+prod_codigo;prod_codbarras;prod_descrpdvs;prod_balanca;prun_setordep;prun_validade;prun_prvenda;prun_dtprvenda;prun_prpdv;prun_prvenda3;prun_prvenda4;prun_prvenda5;prun_prpdv3;prun_prpdv4;prun_prpdv5;ingr_prod_codigo
+//Macros
+["01"]
+[IIF(Cpo(QExp.Prod_Balanca)="P","0","1")]
+[SubStr(Cpo(QExp.Prod_CodBarras),7,6)]
+[Transf(Cpo(QExp.PrUn_PrVenda)*100,"000000")]
+[Transf(Cpo(QExp.PrUn_Validade),"000")]
+[Left(UpS(Cpo(QExp.Prod_DescrPdvs)),25)]
+[Space(25)]
+[SubStr(Cpo(QExp.Prod_CodBarras),7,6)]
+["000"]
+[SubStr(Cpo(QExp.Prod_CodBarras),9,4)]
+[IIF(Cpo(QExp.Prun_validade)=0,"0","1")]
+["1"]
+["000000000000000000000000000000"]
