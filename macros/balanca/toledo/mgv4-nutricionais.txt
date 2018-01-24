@@ -1,0 +1,8 @@
+//edit "Origem"
+PRODUTOS
+//edit "Campos"
+prod_codigo;prod_descricao;prod_codbarras
+//edit "Comportamento"
+CN
+//Macros
+[Edt(FAutom.EdtNutricToledo2)]

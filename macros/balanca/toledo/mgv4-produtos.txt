@@ -1,0 +1,31 @@
+//edit "Origem"
+PRODUTOS
+//edit "Campos"
+prod_codigo;prod_descricao;prod_complemento;prod_grup_codigo;prod_grup_nome;prod_dpto_codigo;prod_trib_codigo;prod_marca;prod_codbarras;prod_descrpdvs;prod_emb;prod_vslh_codigo;prod_balanca;prod_extra1;prun_setor;prun_validade;prun_prvenda;prun_ativo;prun_extra5;ingr_prod_codigo;ingr_linha1;ingr_linha2;ingr_linha3;ingr_linha4;ingr_linha5;ingr_linha6;ingr_linha7;ingr_linha8;ingr_linha9;ingr_linha10
+//Macros
+[IIF(TRIM(Cpo(QExp.PrUn_Setor))="FEI","04","")]
+[IIF(TRIM(Cpo(QExp.PrUn_Setor))="ACO","03","")]
+[IIF(TRIM(Cpo(QExp.PrUn_Setor))="FLC","01","")]
+[IIF(TRIM(Cpo(QExp.PrUn_Setor))="PDA","01","")]
+[IIF(TRIM(Cpo(QExp.PrUn_Setor))="ROT","01","")]
+[IIF(Cpo(QExp.Prod_Balanca)="P","0","1")]
+[Substr(Cpo(QExp.Prod_Codbarras),7,6)]
+[Transf(Cpo(QExp.PrUn_PrVenda)*100,"000000")]
+[StrZero(Cpo(QExp.PrUn_Validade),3)]
+[UpS(Left(cpo(QExp.Prod_DescrPdvs),25))+Space(25)]
+[Substr(Cpo(QExp.Prod_Codbarras),7,6)]
+[IIF(Cpo(QExp.PrUn_Extra5)>1,"0000","0000")]
+[Substr(Cpo(QExp.Prod_Codbarras),7,6)]
+[IIF(StrZero(Cpo(QExp.PrUn_Validade),3)>"0","1","0")]
+[IIF(StrZero(Cpo(QExp.PrUn_Validade),3)>"0","1","0")]
+["0000"]
+["000000000000"]
+["00000000000"]
+["0"]
+["0000"]
+["0000"]
+["0000"]
+["0000"]
+["0000"]
+["0000"]
+["000000000000"]
