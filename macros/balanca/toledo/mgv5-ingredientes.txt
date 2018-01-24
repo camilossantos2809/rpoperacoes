@@ -1,0 +1,19 @@
+//edit "Origem"
+INGREDIENTES
+//edit "Campos"
+ingr_prod_codigo;ingr_linha1;ingr_linha2;ingr_linha3;ingr_linha4;ingr_linha5;prod_codbarras
+//Macros
+[Substr(Cpo(QExp.Prod_Codbarras),7,6)]
+[Space(100)]
+["__"]
+[SubStr(Left(Ups(Cpo(QExp.Ingr_linha1)),54),1,54)]
+["__"]
+[SubStr(Left(Ups(Cpo(QExp.Ingr_linha2)),54),1,54)]
+["__"]
+[Ups("Supermercado Teste")]
+[Space(28)]
+["__"]
+[Ups("CNPJ:_01.132.478/0001-38")]
+[Space(30)]
+["__"]
+[SubStr(Left(Ups(Cpo(QExp.Ingr_linha5)),54),1,54)]

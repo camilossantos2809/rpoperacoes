@@ -1,0 +1,14 @@
+//edit "Origem"
+PRODUTOS
+//edit "Condição" (sugestão)
+(PrUn_Ativo="S" and PrUn_PrVenda > 0)
+//edit "Campos"
+prod_codigo;prod_descricao;prod_dpto_codigo;prod_trib_codigo;prod_tipo;prod_codbarras;prod_descrpdvs;prod_balanca;prun_prod_codigo;prun_unid_codigo;prun_prvenda;prun_dtprvenda;prun_oferta;prun_prnormal;prun_ativo;prun_prpdv
+//Macros
+[Edt(FAutom.CodBarras)]
+|
+[Left(UpS(Cpo(QExp.Prod_DescrPdvs)),22)]
+|
+[Transf(Cpo(QExp.PrUn_PrVenda),"0.00")]
+|130|140|red|130|160|blue|
+[Chr(13)+Chr(10)]

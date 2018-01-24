@@ -1,0 +1,15 @@
+//edit "Origem"
+PRODUTOS
+//edit "Condição" (sugestão)
+(PrUn_Ativo="S" and PrUn_PrVenda > 0 and (PrUn_Setor="ACO" or PrUn_Setor="PA01" or PrUn_Setor="FRU"))
+//edit "Campos"
+PrUn_Setor;PrUn_Tecla;Prod_Codbarras;Prod_DescrPdvs
+//Macros
+01
+[IIF(Trim(Cpo(QExp.PrUn_Setor))="ACO","1","")]
+[IIF(Trim(Cpo(QExp.PrUn_Setor))="FRU","2","")]
+[IIF(Trim(Cpo(QExp.PrUn_Setor))="PA01","3","")]
+[Right(Cpo(QExp.PrUn_Tecla),2)]
+[Substr(Cpo(QExp.Prod_Codbarras),7,6)]
+0
+[UpS(Left(cpo(QExp.Prod_DescrPdvs),24))]

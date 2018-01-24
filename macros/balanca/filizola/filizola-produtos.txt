@@ -1,0 +1,11 @@
+//edit "Origem"
+PRODUTOS
+//edit "Campos"
+prod_codigo;prod_descricao;prod_complemento;prod_grup_codigo;prod_grup_nome;prod_dpto_codigo;prod_trib_codigo;prod_marca;prod_codbarras;prod_descrpdvs;prod_vslh_codigo;prod_balanca;prod_extra1;prun_setor;prun_validade;prun_prvenda;prun_ativo;ingr_prod_codigo;ingr_linha1;ingr_linha2;ingr_linha3;ingr_linha4;ingr_linha5
+//Macros
+[Substr(Cpo(QExp.Prod_Codbarras),7,6)]
+[IIF(Cpo(QExp.Prod_Balanca)="P","P","U")]
+[UpS(Left(Cpo(QExp.Prod_DescrPdvs),22))]
+[Transf(Cpo(QExp.PrUn_PrVenda)*100,"0000000")]
+[StrZero(Cpo(QExp.PrUn_Validade),3)]
+[Edt(FAutom.EdtNutricFilizola4)]

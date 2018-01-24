@@ -1,0 +1,10 @@
+//edit "Origem"
+PRODUTOS
+//edit "Campos"
+prun_setor;prun_codbarras;prun_tecla;prod_codigo
+//Macros
+[Left(Cpo(QExp.prun_Setor),5)]
+[Space(7)]
+[Substr(Cpo(QExp.Prod_Codbarras),7,6)]
+[Transf(Val(Edt(FAutom.ContExp)),"0000")]
+[Cpo(QExp.prun_Tecla)]

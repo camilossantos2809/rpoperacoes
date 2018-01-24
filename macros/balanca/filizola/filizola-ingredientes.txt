@@ -1,0 +1,19 @@
+//edit "Origem"
+INGREDIENTES
+//edit "Campos"
+prun_setor;ingr_prod_codigo;ingr_linha1;ingr_linha2;ingr_linha3;ingr_linha4;ingr_linha5;prod_codbarras
+//Macros
+[Left((Cpo(QExp.PrUn_Setor)),5)]
+[Space(9)]
+[SubStr(Cpo(QExp.Prod_CodBarras),7,6)]
+[Str(Cpo(QExp.Ingr_prod_codigo))]
+[Left((Cpo(QExp.Ingr_Linha1)),55)]
+[""]
+[Left((Cpo(QExp.Ingr_Linha2)),55)]
+[""]
+[Left((Cpo(QExp.Ingr_Linha3)),55)]
+[""]
+[Left((Cpo(QExp.Ingr_Linha4)),55)]
+[""]
+[Left((Cpo(QExp.Ingr_Linha5)),55)]
+["@"]

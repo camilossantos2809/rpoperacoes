@@ -1,0 +1,10 @@
+^XA[Chr(13)+Chr(10)]
+^MD17
+^FO100,190^ADN,22,15^FD"SUPER-TESTES"^FS[Chr(13)+Chr(10)]
+^FO90,65^ADN,22,15^FD[Ups(Cpo(QEtq.prod_complemento))]^FS[Chr(13)+Chr(10)]
+^FO05,20^ADN,45,15^FD[Ups(Cpo(QEtq.prod_descricao))]^FS[Chr(13)+Chr(10)]
+^FO285,100^ADN,45,15^FDR$^FS[Chr(13)+Chr(10)]
+^FO080,080^ADN,130,45^FD[TransfR(Cpo(QEtq.prun_prvenda),"######0.00")]^FS[Chr(13)+Chr(10)]
+^FO025,145^ADN,35,20^FD[(Cpo(QEtq.prod_codbarras))]^FS[Chr(13)+Chr(10)]
+^FO100,220^ADN,18,10^FD[iif(Cpo(QEtq.prun_oferta)="S","Oferta"+space(2)+ "até: "+DateToStr(Cpo(QEtq.prun_dtoferta)),"")]^FS[Chr(13)+Chr(10)]
+^XZ[Chr(13)+Chr(10)]
