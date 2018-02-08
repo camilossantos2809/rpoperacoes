@@ -8,12 +8,14 @@
 DATABASE_IP='127.0.0.1'
 DATABASE_PORTA='5432'
 DATABASE_USUARIO='postgres'
-DATABASE_SENHA='rp1064'
-DATABASE_NOME='stackoverflow'
-DIRETORIO_ARQUIVO_BACKUP='/home/camilo/Documentos/rp/backup/stackoverflow/' #informar a barra (/) no final
+DATABASE_SENHA='123456789'
+DATABASE_NOME='erp'
+DIRETORIO_ARQUIVO_BACKUP='/backup/erp/' #informar a barra (/) no final
 NOME_ARQUIVO_BACKUP='bkp_erp'
-DIRETORIO_NOME_ARQUIVO_BACKUP=$DIRETORIO_ARQUIVO_BACKUP$NOME_ARQUIVO_BACKUP'_'`date +%Y%m%d_%H%M%S`.bkp
+# Após execução do script o nome do arquivo exemplo seria semelhante a: /backup/erp/bkp_erp_20180207_223000.dump
+DIRETORIO_NOME_ARQUIVO_BACKUP=$DIRETORIO_ARQUIVO_BACKUP$NOME_ARQUIVO_BACKUP'_'`date +%Y%m%d_%H%M%S`.dump
 DIRETORIO_NOME_ARQUIVO_LOG=$DIRETORIO_ARQUIVO_BACKUP$NOME_ARQUIVO_BACKUP'_'`date +%Y%m%d_%H%M%S`.log
+
 
 echo "Iniciando backup"
 echo "Iniciando backup" >> $DIRETORIO_NOME_ARQUIVO_LOG
