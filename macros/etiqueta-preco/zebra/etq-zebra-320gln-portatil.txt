@@ -1,0 +1,13 @@
+^XA^LT0^MNA^MFC^MTT^PON^PMN^LH0,0^JMA^PR4,4^MD0^JUS^LRN^CI0
+^XZ
+^XA
+^FO390,165^AFR,28,05^FH\\^FD[leftSpc(Ups(Cpo(QEtq.prod_Descricao)),16)]^FS
+^FO340,165^AFR,28,05^FH\\^FD[trim(rightSpc(Ups(Cpo(QEtq.prod_Descricao)),16))]^FS
+^FO300,165^AFR,18,05^FH\\^FD[Ups(Cpo(QEtq.prod_complemento))]^FS
+^FO240,165^APR,48,10^FH\\^FD[Ups(Cpo(QEtq.prod_marca))]^FS
+^FO200,395^AFR,2,2^FH\\^FDR\$^FS
+^FO200,445^APR,190,58^FH\\^FD[(TRANSF(Cpo(QEtq.prun_PrPdv),"0.00"))]^FS
+^BY2,8,45^FT160,180^BER,,Y,N^FD[Cpo(QEtq.prod_CodBarras)]^FS
+^FO140,455^ADR,10,10^FH\\^FD[cpo(SISTEMA.HOJE)]^FS
+^FO170,455,^ADR,10,10^FD[TRANSF(Cpo(QEtq.prod_codigo),"0")]^FS
+^XZ[CHR(13)+CHR(10)]
