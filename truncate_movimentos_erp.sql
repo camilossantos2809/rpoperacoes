@@ -36,7 +36,7 @@ do $$
                 and relkind = 'r' 
                 and reltuples > 0
             order by relname
-        loop --328
+        loop
             raise notice 'Iniciando limpeza da tabela % ...', vTabelaTruncate.relname;
             execute format('truncate %I;', vTabelaTruncate.relname);
             raise notice 'Realizado truncate na tabela % ...', vTabelaTruncate.relname;
