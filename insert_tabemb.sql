@@ -3,16 +3,16 @@
   que não existem na tabela tabemb.
 */
 insert into tabemb (
-  temb_codigo
+    temb_codigo
 )
 select 
-  prod_emb
+    prod_emb
 from 
-  produtos
+    produtos
 group by 
-  prod_emb
+    prod_emb
 having 
-  prod_emb not in (
-    select temb_codigo
-    from tabemb
-  );
+    prod_emb not in (
+        select temb_codigo
+        from tabemb
+    );
