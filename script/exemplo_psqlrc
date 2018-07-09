@@ -1,0 +1,30 @@
+-- Conjunto de comandos que serão executados automaticamente ao abrir o psql no GNU/Linux
+-- O arquivo deve ser salvo na pasta do usuário utilizado para conectar ao banco conforme exemplo:
+-- /home/meu-usuario/.psqlrc
+
+-- Desabilita a exibição de mensagems psql
+-- \set QUIET 1
+
+-- Mostra o tempo de execução da última query
+\timing
+
+-- Quando necessário habilita a visualização expandida
+\x auto
+
+-- Habilita a exibição de mais informações quando for gerado erro
+-- \set VERBOSITY verbose
+
+-- Define o encoding do client para LATIN1
+\encoding LATIN1
+
+-- Cria o arquivo com histórico dos comandos por database
+\set HISTFILE ~/.psql_history- :DBNAME
+
+-- Personaliza a exibição de valores nulos
+\pset null '<NULL>'
+
+-- Adiciona bordas nos retornos de consultas
+\pset border 2
+
+-- Habilita novamente a exibição de mensagens no psql
+-- \unset QUIET
