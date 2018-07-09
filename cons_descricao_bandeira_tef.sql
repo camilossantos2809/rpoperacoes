@@ -2,7 +2,29 @@
     Retorna a descrição do Sitef para a bandeira do cartão de acordo o movimento.
     É verificado se a descrição existe ou não na tabela cadbins com base nos campos cdb_descsitef e cdb_dc.
     Pode ser utilizada para cadastrar a descrição das bandeiras no cadastro de bins.
+
+    Exemplo de retorno:
+
+    wrpdv=# \i cons_descricao_bandeira_tef.sql 
+    +--------------+----+------------------+------------+
+    | finalizadora | dc |     bandeira     | cadastrado |
+    +--------------+----+------------------+------------+
+    | 04           | D  | VISA DEBITO      | S          |
+    | 04           | D  | NUTRICASH        | N          |
+    | 05           | C  | NEUS             | N          |
+    | 04           | D  | SODEXO ALIMENTAC | N          |
+    | 04           | D  | TICKET ALIMENTAC | N          |
+    | 04           | D  | MASTERCARD DEBIT | N          |
+    | 05           | C  | MASTERCARD CREDI | N          |
+    | 04           | D  | ELO DEBITO       | N          |
+    | 04           | D  | ALIMENTACAO      | S          |
+    | 05           | C  | VISA CREDITO     | N          |
+    | 05           | C  | ELO CREDITO      | N          |
+    | 05           | C  | HIPERCARD        | N          |
+    +--------------+----+------------------+------------+
+    (12 registros)
 */
+
 with bandeiras as (
     select 
         case 
