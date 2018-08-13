@@ -17,14 +17,16 @@ do $$
     begin
         vNomeTabelas := array[
             'agforn', 'agrec', 'ajustemvto', 'apurimpostos', 'apuroutros', 'auditest',
-            'biometrias', 'bxparcial', 'bxpendest', 'conscadastronfe', 'consprotnfe',
-            'consultacte', 'consprotmdfe', 'consrecnfe', 'consultanfservico', 'dados2',
-            'errosimpautom', 'inutnfe', 'log', 'mensagens', 'metasprod', 'negociacoesc',
-            'negociacoesd', 'negociacoesp', 'nfcc', 'nfec', 'nfed', 'pedcomprac',
-            'pedcomprad', 'pedvendac', 'pedvendad', 'pendest', 'pendfin', 'rascunhos',
-            'recmerc', 'recnfe', 'regrasneg', 'regforn', 'regrastxadm', 'resdpto',
-            'resdptodia', 'saldosger', 'saldosbco', 'saldoscon', 'seqmapa', 'susplcto',
-            'tabforn', 'textos', 'vdonlinefi', 'vdonlineprod', 'xmlnfe',
+            'biometrias', 'bxparcial', 'bxpendest', 'conccartoes', 'conscadastronfe', 
+            'consprotnfe', 'consultacte', 'consprotmdfe', 'consrecnfe', 'consultanfservico', 
+            'dados2', 'errosimpautom', 'inutnfe', 'log', 'marketplacecontroleprodutos', 
+            'marketplaceocorrencia', 'marketplacepromocao', 'marketplacepromocaocb', 
+            'mensagens', 'metasprod', 'negociacoesc', 'negociacoesd', 'negociacoesp', 
+            'nfcc', 'nfec', 'nfed', 'pedcomprac', 'pedcomprad', 'pedvendac', 'pedvendad', 
+            'pendest', 'pendfin', 'rascunhos', 'recmerc', 'recnfe', 'refdctos', 'regrasneg', 
+            'regforn', 'regrastxadm', 'resdpto', 'resdptodia', 'saldosger', 'saldosbco', 
+            'saldoscon', 'seqmapa', 'susplcto', 'tabforn', 'textos', 'vdonlinefi', 
+            'vdonlineprod', 'xmlauxiliar', 'xmlcte', 'xmlnfe', 'xmlnfeautd'
             'mov%', 'invfisc%', 'vdadet%', 'ra__'
         ];
 
