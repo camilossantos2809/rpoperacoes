@@ -1,7 +1,7 @@
 //edit "Origem"
 PRODUTOS
 //edit "Campos"
-prun_setor;prun_codbarras;prun_tecla;prod_codigo
+prun_setor;prod_codbarras;prun_tecla;prod_codigo
 //Macros
 [Left(Cpo(QExp.prun_Setor),5)]
 [Space(7)]
