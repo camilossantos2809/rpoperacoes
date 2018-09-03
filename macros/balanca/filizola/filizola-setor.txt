@@ -2,6 +2,9 @@
 PRODUTOS
 //edit "Campos"
 prun_setor;prod_codbarras;prun_tecla;prod_codigo
+
+//No nome do arquivo pode ser necessário definir como SETORES.TXT para que o SmartEditor consiga realizar a importação
+
 //Macros
 [Left(Cpo(QExp.prun_Setor),5)]
 [Space(7)]

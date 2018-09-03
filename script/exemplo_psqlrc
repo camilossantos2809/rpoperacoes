@@ -26,5 +26,8 @@
 -- Adiciona bordas nos retornos de consultas
 \pset border 2
 
+-- Melhora a aparência do grid das consultas utilizando uma linha contínua
+\pset linestyle unicode
+
 -- Habilita novamente a exibição de mensagens no psql
 -- \unset QUIET
