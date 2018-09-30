@@ -2,11 +2,11 @@
     Comandos para serem utilizados para remover a movimentação na base de dados antes da implantação
 */
 
-set client_encoding='latin1';
+set client_encoding = 'latin1';
 
 /*
     Necessário atualizar as estatísticas do postgres apenas para poder remover os registros
-    somente de tabelas que possuam registros
+    somente de tabelas que possuam registros, diminuindo a quantidade de locks geradas na transação.
 */
 analyze verbose;
 
@@ -28,7 +28,8 @@ do $$
             from pg_class
             where
                 relname like any (vNomeTabelas)
-                and relkind = 'r' 
+                and relkind = 'r'
+                and relnamespace = 'public'::regnamespace -- apenas as tabelas do schema public serão considerados 
                 and reltuples > 0
             order by relname
         loop

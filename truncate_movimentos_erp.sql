@@ -1,12 +1,12 @@
 /*
-    Comandos para serem utilizados para remover a movimentação na base de dados antes da implantação
+    Comandos para serem utilizados para remover os registros de movimentação na base de dados antes da implantação
 */
 
-set client_encoding='latin1';
+set client_encoding = 'latin1';
 
 /*
     Necessário atualizar as estatísticas do postgres apenas para poder remover os registros
-    somente de tabelas que possuam registros
+    somente de tabelas que possuam registros, diminuindo a quantidade de locks geradas na transação.
 */
 analyze verbose;
 
@@ -15,6 +15,7 @@ do $$
         vNomeTabelas varchar[];
         vTabelaTruncate record;
     begin
+        -- Nomes das tabelas que terão os registros removidos na execução do script
         vNomeTabelas := array[
             'agforn', 'agrec', 'ajustemvto', 'apurimpostos', 'apuroutros', 'auditest',
             'biometrias', 'bxparcial', 'bxpendest', 'conccartoes', 'conscadastronfe', 
@@ -35,7 +36,8 @@ do $$
             from pg_class
             where
                 relname like any (vNomeTabelas)
-                and relkind = 'r' 
+                and relkind = 'r'
+                and relnamespace = 'public'::regnamespace -- apenas as tabelas do schema public serão considerados
                 and reltuples > 0
             order by relname
         loop
