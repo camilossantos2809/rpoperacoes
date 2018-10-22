@@ -27,7 +27,7 @@ do $$
             'pendest', 'pendfin', 'rascunhos', 'recmerc', 'recnfe', 'refdctos', 'regrasneg', 
             'regforn', 'regrastxadm', 'resdpto', 'resdptodia', 'saldosger', 'saldosbco', 
             'saldoscon', 'seqmapa', 'susplcto', 'tabforn', 'textos', 'vdonlinefi', 
-            'vdonlineprod', 'xmlauxiliar', 'xmlcte', 'xmlnfe', 'xmlnfeautd'
+            'vdonlineprod', 'xmlauxiliar', 'xmlcte', 'xmlnfe', 'xmlnfeautd',
             'mov%', 'invfisc%', 'vdadet%', 'ra__'
         ];
 
