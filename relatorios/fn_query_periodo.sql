@@ -26,7 +26,8 @@
                 'inner join produtos 
                 on (mprd_prod_codigo=prod_codigo) 
                 where prod_codigo=100006',
-                array['prod_codigo','prod_descricao','mprd_valor']
+                array['prod_codigo','prod_descricao','mprd_valor'],
+                true
             );
     
     Exemplo de retorno:
@@ -39,7 +40,7 @@
             inner join produtos on (mprd_prod_codigo = prod_codigo)
         where
             prod_codigo = 100006
-        union
+        union all
         select
             prod_codigo,
             prod_descricao,
@@ -49,8 +50,6 @@
         inner join produtos on (mprd_prod_codigo = prod_codigo)
         where
             prod_codigo = 100006
-
-    Versão: 0.2
 */
 create or replace function utils.fn_query_periodo(
     tabela text,
