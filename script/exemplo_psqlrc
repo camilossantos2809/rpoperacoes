@@ -29,5 +29,14 @@
 -- Melhora a aparência do grid das consultas utilizando uma linha contínua
 \pset linestyle unicode
 
+-- %M refers to the database server's hostname -- is "[local]" if the connection is over a Unix domain socket
+-- %> refers to the listening port
+-- %n refers to the session username
+-- %/ refers the current database
+-- %R refers to whether you're in single-line mode (^) or disconnected (!) but is normally =
+-- %# refers to whether you're a superuser (#) or a regular user (>)
+-- %x refers to the transaction status -- usually blank unless in a transaction block (*)
+\set PROMPT1 '%M:%> %n@%/%R%#%x '
+
 -- Habilita novamente a exibição de mensagens no psql
 -- \unset QUIET
