@@ -2,4 +2,4 @@ notes.sql
 settings.json
 .vscode/
 .pgpass
-*.txt
+/*.txt
