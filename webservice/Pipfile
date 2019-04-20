@@ -6,6 +6,8 @@ verify_ssl = true
 [dev-packages]
 pylint = "*"
 pylama = "*"
+rope = "*"
+autopep8 = "*"
 
 [packages]
 requests = "*"
