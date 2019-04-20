@@ -3,3 +3,4 @@ settings.json
 .vscode/
 .pgpass
 /*.txt
+webservice/config.ini
