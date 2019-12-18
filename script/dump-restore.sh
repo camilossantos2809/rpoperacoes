@@ -35,3 +35,11 @@ psql -h ip -U usuario -d bancodedados -c "CREATE ROLE ntpaulista LOGIN
 
 # Criação de database utilizando executável do postgres
 createdb erp_cliente -E latin1 --lc-ctype C --lc-collate C -T template0
+
+# Atualização de clusters (versão)
+/usr/lib/postgresql/12/bin/pg_upgrade \
+  -b /usr/lib/postgresql/11/bin -B /usr/lib/postgresql/12/bin \
+  -d /home/postgres/11/main/ -D /home/postgres/12/main \
+  -p 5432 -P 5434 \
+  -o '-c config_file=/etc/postgresql/11/main/postgresql.conf' -O '-c config_file=/etc/postgresql/12/main/postgresql.conf' \
+  -j 4
