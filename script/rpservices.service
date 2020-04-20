@@ -1,0 +1,23 @@
+# Exemplo de configuração de serviço do RPServices em sistemas GNU/Linux que possuam o systemd
+# Esse arquivo deverá ser copiado para o diretório /etc/systemd/system/
+
+# Iniciar serviço: systemctl start rpservices
+# Habilitar inicialização automática: systemctl enable rpservices
+
+[Unit]
+Description=RPServices service
+After=network.target
+# After=postgresql.service
+# Requires=postgresql.service
+
+
+[Service]
+Type=simple
+Restart=always
+User=rpservices
+WorkingDirectory=/opt/rp/rpservices
+ExecStart=/opt/rp/rpservices/bin/./rpservices
+
+
+[Install]
+WantedBy=multi-user.target
