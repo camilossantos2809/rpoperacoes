@@ -7,6 +7,8 @@
 [Unit]
 Description=RPServices service
 After=network.target
+
+# Pode ser habilitado o parâmetro abaixo caso seja necessário validar a inicialização do serviço do postgres quando ele estiver instalado na mesma máquina que o RPServices
 # After=postgresql.service
 # Requires=postgresql.service
 
@@ -14,7 +16,11 @@ After=network.target
 [Service]
 Type=simple
 Restart=always
+# Usuário do sistema operacional que irá gerenciar o serviço. Portanto ele precisa ter permissões totais no diretório onde o RPServices estiver instalado ou ser o owner do diretório
 User=rpservices
+# O RPServices funciona com JRE8, pode haver situações em que o sistema operacional utilize versões diferentes como padrão
+# O parâmetro abaixo permite especificar a variável JAVA_HOME apenas para o daemon do RPServices
+# Environment="JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64/jre/"
 WorkingDirectory=/opt/rp/rpservices
 ExecStart=/opt/rp/rpservices/bin/./rpservices
 
