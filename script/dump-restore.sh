@@ -37,9 +37,13 @@ psql -h ip -U usuario -d bancodedados -c "CREATE ROLE ntpaulista LOGIN
 createdb erp_cliente -E latin1 --lc-ctype C --lc-collate C -T template0
 
 # Atualização de clusters (versão)
-/usr/lib/postgresql/12/bin/pg_upgrade \
-  -b /usr/lib/postgresql/11/bin -B /usr/lib/postgresql/12/bin \
-  -d /home/postgres/11/main/ -D /home/postgres/12/main \
-  -p 5432 -P 5434 \
-  -o '-c config_file=/etc/postgresql/11/main/postgresql.conf' -O '-c config_file=/etc/postgresql/12/main/postgresql.conf' \
+# Após instalação da versão nova é necessário parar os serviços do postgres para executar o pg_upgrade
+# É necessário estar logado com o usuário postgres no terminal
+# Verificar espaço em disco e configurações do diretório "data" antes de executar o script
+# https://www.postgresql.org/docs/13/pgupgrade.html
+/usr/lib/postgresql/13/bin/pg_upgrade \
+  -b /usr/lib/postgresql/12/bin -B /usr/lib/postgresql/13/bin \
+  -d /home/postgres/12/main/ -D /home/postgres/13/main \
+  -p 5432 -P 5433 \
+  -o '-c config_file=/etc/postgresql/12/main/postgresql.conf' -O '-c config_file=/etc/postgresql/13/main/postgresql.conf' \
   -j 4
